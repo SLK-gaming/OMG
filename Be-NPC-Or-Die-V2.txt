@@ -22,7 +22,7 @@ local Window = Fluent:CreateWindow({
 
     local function getCharacter()
         local char = plr.Character or plr.CharacterAdded:Wait()
-        local humPart = char:WaitForChild("HumanoidRootPart", 5)
+        local humPartchar:WaitForChild("HumanoidRootPart", 5)
         return char, humPart
     end
 
@@ -80,7 +80,7 @@ local Window = Fluent:CreateWindow({
         local function serverHop()
             local servers = {}
             local req = request({
-                Url = "https://games.roblox.com/v1/games/" .. game.PlaceId .. "/servers/Public?sortOrder=Desc&limit=100&excludeFullGames=true",
+                Url = "https://games.roblox.com/v1/games/" .. game.PlaceId .. "/servers/Public?sortOrder=Desc&limit=100&excludeFullGames
                 Method = "GET"
             })
         
@@ -94,7 +94,7 @@ local Window = Fluent:CreateWindow({
                     end
                 end
             else
-                warn("Failed to fetch server list: " .. req.StatusMessage)
+                warn("Failed to fetch server list: " .. req.Statge)
             end
         
             if #servers > 0 then
@@ -194,7 +194,7 @@ local Window = Fluent:CreateWindow({
             end
         end)
         local hopParagraph = Tabs.Farm:CreateParagraph("AutoHop", {
-            Title = "^ If there are less than 3 players on the server",
+            Title = "^ If there are ls on the server",
             Content = ""
         })
 
@@ -270,7 +270,7 @@ local Window = Fluent:CreateWindow({
                 end
                 task.wait(.5)
                 for i, v in ipairs(workspace:GetChildren()) do
-                    if v:FindFirstChild("testt") == nil and v:FindFirstChild("Died") == nil and v:FindFirstChild("Humanoid") then
+                    if v:FindFirstChild("testt") == nil and v:FindFiDied") == nil and v:FindFirstChild("Humanoid") then
                         Magnitude =
                             (plr.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude
                         if Magnitude <= 50 then
@@ -302,18 +302,7 @@ local Window = Fluent:CreateWindow({
 
         AutoTask:OnChanged(
             function()
-                while Options.AutoTask.Value do
-                    local taskName = char:GetAttribute("TaskName")
-                    for _, task in pairs(game:GetService("Workspace"):GetDescendants()) do
-                        if task:IsA("Model") and task.Name == taskName and task.Parent.Name == "Tasks" then
-                            local hitbox = task:WaitForChild("Hitbox")
-                            local distance = (humPart.Position - hitbox.Position).Magnitude
-                            if distance <= task.ProximityPrompt.MaxActivationDistance then
-                                local prompt = task.ProximityPrompt
-                                prompt.HoldDuration = 0
-                                prompt:InputHoldBegin()
-                                wait(prompt.HoldDuration)
-                                prompt:InputHoldEnd()
+                while Options.AutoTask                   prompt:InputHoldEnd()
                             end
                         end
                     end
@@ -350,7 +339,7 @@ local Window = Fluent:CreateWindow({
             function()
                 if Options.ToggleESP.Value then
                     while Options.ToggleESP.Value do
-                        for _, player in pairs(workspace:GetDescendants()) do
+                        for _, player in pairs(workspatDescendants()) do
                             if player:IsA("Model") and player:FindFirstChild("HumanoidRootPart") then
                                 if player:FindFirstChild("HumanoidRootPart").CollisionGroup == "Player" and player ~= char then
                                     local playerObject = players:GetPlayerFromCharacter(player)
@@ -417,7 +406,7 @@ local Window = Fluent:CreateWindow({
                         wait(.6)
                     end
                 else
-                    if plr:WaitForChild("PlayerGui"):FindFirstChild("Modules"):FindFirstChild("Gameplay"):WaitForChild("Sprint") then
+                    if plr:WaitForChild("PlayerGui"):Find):FindFirstChild("Gameplay"):WaitForChild("Sprint") then
                         plr:WaitForChild("PlayerGui"):FindFirstChild("Modules"):FindFirstChild("Gameplay"):WaitForChild(
                                 "Sprint"
                             ):FindFirstChild("Stamina").Value = 6
@@ -502,7 +491,7 @@ local Window = Fluent:CreateWindow({
                             end
                         end
                     end
-                    getgenv().Noclipping = game:GetService("RunService").Stepped:Connect(NoclipLoop)
+                    getgenv().Noclipping = game:GetServiervice").Stepped:Connect(NoclipLoop)
                 else
                     if getgenv().Noclipping then
                         getgenv().Noclipping:Disconnect()
